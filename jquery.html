@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Json Verilerini Tabloya Çekme</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+            cursor: pointer;
+        }
+        tr.grup-baslik td {
+            font-weight: bold;
+            background-color: #e9ecef;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+   <div id="table-container"></div>
+
+   <script>
+    $(document).ready(function(){
+        $.getJSON("Adsız.json",function(veri){
+            var grup = veri.Gruplar;
+            var tablo = '<table id="json-tablo">';
+            $.each(grup, function(grupAdi, grupVerileri){
+                tablo += '<tr class="grup-baslik"><td colspan="4">'+grupAdi + '</td></tr>';
+
+                tablo += '<thead><tr>' + 
+                         '<th>Sıra No</th><th>Adı Soyadı</th><th>Kitap Sayısı</th><th>Sayfa Sayısı</th>' +
+                         '</tr></thead>';
+                
+                grupVerileri.forEach(function(item){
+                    tablo += '<tr>' +
+                             '<td>' + item.sıraNo + '</td>' +
+                             '<td>' + item.adıSoyadı + '</td>' +
+                             '<td>' + item.kitapSayısı + '</td>' +
+                             '<td>' + item.sayfaSayısı + '</td>' +
+                             '</tr>';
+                });
+            });
+            tablo += '</table>';
+
+            $('#table-container').html(tablo);
+
+        });
+    });
+   </script>
+</body>
+</html>

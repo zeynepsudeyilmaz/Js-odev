@@ -1,0 +1,34 @@
+{
+
+"Gruplar":
+{
+"Grup1": [
+{"sıraNo": 13, "adıSoyadı": "Yavuz", "kitapSayısı": 5, "sayfaSayısı": 500},
+{"sıraNo": 14, "adıSoyadı": "Sultan", "kitapSayısı": 4, "sayfaSayısı": 500},
+{"sıraNo": 15, "adıSoyadı": "Selim", "kitapSayısı": 2, "sayfaSayısı": 400},
+{"sıraNo": 16, "adıSoyadı": "Ayşe", "kitapSayısı": 1, "sayfaSayısı": 300}
+],
+
+"Grup2": [
+{"sıraNo": 9, "adıSoyadı": "Fatih", "kitapSayısı": 5, "sayfaSayısı": 500},
+{"sıraNo": 10, "adıSoyadı": "Sultan", "kitapSayısı": 4, "sayfaSayısı": 500},
+{"sıraNo": 11, "adıSoyadı": "Mehmet", "kitapSayısı": 2, "sayfaSayısı": 400},
+{"sıraNo": 12, "adıSoyadı": "Han", "kitapSayısı": 1, "sayfaSayısı": 300}
+],
+
+
+"Grup3": [
+{"sıraNo": 5, "adıSoyadı": "Halil", "kitapSayısı": 5, "sayfaSayısı": 500},
+{"sıraNo": 6, "adıSoyadı": "İhsan", "kitapSayısı": 4, "sayfaSayısı": 200},
+{"sıraNo": 7, "adıSoyadı": "Emrah", "kitapSayısı": 2, "sayfaSayısı": 700},
+{"sıraNo": 8, "adıSoyadı": "Fatma", "kitapSayısı": 1, "sayfaSayısı": 900}
+],
+
+"Grup4": [
+{"sıraNo": 1, "adıSoyadı": "Alparslan", "kitapSayısı": 5, "sayfaSayısı": 500},
+{"sıraNo": 2, "adıSoyadı": "Numan", "kitapSayısı": 4, "sayfaSayısı": 100},
+{"sıraNo": 3, "adıSoyadı": "Yildiz", "kitapSayısı": 3, "sayfaSayısı": 300},
+{"sıraNo": 4, "adıSoyadı": "Fatma", "kitapSayısı": 6, "sayfaSayısı": 500}
+]
+}
+}

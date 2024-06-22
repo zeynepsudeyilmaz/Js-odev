@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Json Verilerini Tabloya Çekme</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="table-container"></div>
+    <script>
+        fetch("Adsız.json")
+        .then(response => response.json())
+        .then(data => {
+            var table_container = document.getElementById("table-container");
+            var tablo = document.createElement("table");
+
+            for (let grupAdi in data.Gruplar) {
+                var thead = document.createElement("thead");
+                var trGrup = document.createElement("tr");
+                var thGrup = document.createElement("th");
+                thGrup.textContent = grupAdi;
+                thGrup.colSpan = 4;
+                thGrup.style.textAlign = "center";
+                trGrup.appendChild(thGrup);
+                thead.appendChild(trGrup);
+
+                var basliklar = ["Sıra No", "Adı Soyadı", "Kitap Sayısı", "Sayfa Sayısı"];
+                var trBaslik = document.createElement("tr");
+                basliklar.forEach(baslik => {
+                    var thBaslik = document.createElement("th");
+                    thBaslik.textContent = baslik;
+                    trBaslik.appendChild(thBaslik);
+                });
+                thead.appendChild(trBaslik);
+
+                var tbody = document.createElement("tbody");
+                data.Gruplar[grupAdi].forEach(item => {
+                    var trItem = document.createElement("tr");
+                    trItem.innerHTML = `
+                    <td>${item.sıraNo}</td>
+                    <td>${item.adıSoyadı}</td>
+                    <td>${item.kitapSayısı}</td>
+                    <td>${item.sayfaSayısı}</td>
+                    `;
+                    tbody.appendChild(trItem);
+                });
+
+                tablo.appendChild(thead);
+                tablo.appendChild(tbody);
+            }
+
+            table_container.appendChild(tablo);
+        });
+    </script>
+</body>
+</html>

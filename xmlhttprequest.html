@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+            cursor: pointer;
+        }
+        .th-grup {
+            text-align: center;
+            font-size: 20px;
+            background-color: #e9ecef;
+        }
+        tr.grup-baslik td {
+            font-weight: bold;
+            background-color: #e9ecef;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="table-container"></div>
+    <script>
+        window.onload = function() {
+            const xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    const veri = JSON.parse(this.responseText);
+                    var table_container = document.getElementById("table-container");
+                    var tablo = document.createElement("table");
+
+                    for (let grupAdi in veri.Gruplar) {
+                        var thead = document.createElement("thead");
+                        var trGrup = document.createElement("tr");
+                        var thGrup = document.createElement("th");
+                        thGrup.textContent = grupAdi;
+                        thGrup.colSpan = 4;
+                        thGrup.classList.add("th-grup");
+                        trGrup.appendChild(thGrup);
+                        thead.appendChild(trGrup);
+
+                        var basliklar = ["Sıra No", "Adı Soyadı", "Kitap Sayısı", "Sayfa Sayısı"];
+                        var trBaslik = document.createElement("tr");
+                        basliklar.forEach(baslik => {
+                            var thBaslik = document.createElement("th");
+                            thBaslik.textContent = baslik;
+                            trBaslik.appendChild(thBaslik);
+                        });
+                        thead.appendChild(trBaslik);
+
+                        var tbody = document.createElement("tbody");
+                     veri.Gruplar[grupAdi].forEach(item => {
+                            var trItem = document.createElement("tr");
+                            trItem.innerHTML = `
+                                <td>${item.sıraNo}</td>
+                                <td>${item.adıSoyadı}</td>
+                                <td>${item.kitapSayısı}</td>
+                                <td>${item.sayfaSayısı}</td>
+                            `;
+                            tbody.appendChild(trItem);
+                        });
+
+                        tablo.appendChild(thead);
+                        tablo.appendChild(tbody);
+                    }
+
+                    table_container.appendChild(tablo);
+                }
+            };
+            xhttp.open("GET", "Adsız.json", true);
+            xhttp.send();
+        };
+    </script>
+</body>
+</html>
